@@ -28,7 +28,7 @@ app.post("/tweets", (req, res) => {
    };
 
    tweets.push(tweet);
-   res.status(200).send("OK");
+   res.status(201).send("OK");
 });
 
 app.post("/sign-up", (req, res) => {
@@ -40,7 +40,7 @@ app.post("/sign-up", (req, res) => {
    };
 
    usuarios.push(usuario);
-   res.status(200).send("OK");
+   res.status(201).send("OK");
 });
 
 app.listen(5000, () => {
