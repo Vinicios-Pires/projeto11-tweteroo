@@ -11,12 +11,11 @@ const usuarios = [];
 const tweets = [];
 
 app.get("/tweets", (req, res) => {
-   res.send(tweets.reverse().slice(0, 10));
+   res.send(tweets.slice(-10).reverse());
 });
 
 app.post("/tweets", (req, res) => {
    const body = req.body;
-   console.log("body tweet", body);
 
    const nomeUser = usuarios.find(
       (nomeUser) => nomeUser.username === body.username
@@ -29,12 +28,11 @@ app.post("/tweets", (req, res) => {
    };
 
    tweets.push(tweet);
-   res.send(tweets);
+   res.status(200).send("OK");
 });
 
 app.post("/sign-up", (req, res) => {
    const body = req.body;
-   console.log("body do user", body);
 
    const usuario = {
       username: body.username,
@@ -42,7 +40,7 @@ app.post("/sign-up", (req, res) => {
    };
 
    usuarios.push(usuario);
-   res.send(usuarios);
+   res.status(200).send("OK");
 });
 
 app.listen(5000, () => {
